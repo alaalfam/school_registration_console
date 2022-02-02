@@ -1,5 +1,6 @@
-import 'package:school_registration_console/school_registration_console.dart' as school_registration_console;
+import 'package:school_registration_console/core/dashboard.dart';
 
 void main(List<String> arguments) {
-  print('Hello world: ${school_registration_console.calculate()}!');
+  final dashboard = Dashboard();
+  dashboard.initStudentTeacherCourseNumber();
 }
