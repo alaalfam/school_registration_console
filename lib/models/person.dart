@@ -1,5 +1,4 @@
-
-import 'package:school_registration_console/models/gender.dart';
+import 'gender.dart';
 
 class Person {
   String idNumber;

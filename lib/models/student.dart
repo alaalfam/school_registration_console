@@ -1,9 +1,27 @@
-import 'package:school_registration_console/models/person.dart';
+import 'person.dart';
 
 class Student extends Person {
   String stNumber;
+  String teachersName;
 
-  Student() : super();
+  Student({
+    required this.stNumber,
+    required this.teachersName,
+    idNumber,
+    firstName,
+    lastName,
+    birthday,
+    gender,
+    address,
+    phoneNumber,
+  }) : super(
+            idNumber: idNumber,
+            firstName: firstName,
+            lastName: lastName,
+            birthday: birthday,
+            gender: gender,
+            address: address,
+            phoneNumber: phoneNumber);
 
   // TODO: write method to search in teachers.
 
