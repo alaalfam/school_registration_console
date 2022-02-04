@@ -1,11 +1,14 @@
 import 'gender.dart';
 import 'person.dart';
+import 'student.dart';
 
 class Teacher extends Person {
   String stTeacher;
+  final List<Student> students;
 
   Teacher({
     required this.stTeacher,
+    this.students = const [],
     idNumber,
     firstName,
     lastName,
