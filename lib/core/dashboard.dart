@@ -77,6 +77,9 @@ class Dashboard {
   // TODO write a method to get teachers object as list.
 
   // TODO write a method to get student object as list.
+  void initStudents() {}
+
+  void printStudents() {}
 
   // TODO write a method to get course object as list.
 
