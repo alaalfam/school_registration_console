@@ -1,10 +1,13 @@
 import 'dart:io';
-
+import '../models/course.dart';
 import '../models/gender.dart';
 import '../models/teacher.dart';
+import '../models/student.dart';
 
 class Dashboard {
   List<Teacher> allTeachers = [];
+  List<Student> allStudents = [];
+  List<Course> allCourses = [];
   int? teacherNumber;
   int? studentNumber;
   int? courseNumber;
@@ -18,10 +21,14 @@ class Dashboard {
     courseNumber = int.parse(stdin.readLineSync()!);
     initTeacher();
     printAllteachers();
+    initStudent();
+    printAllStudents();
+    initCourse();
+    printAllCourse();
   }
 
   void initTeacher() {
-    for (int i = 0; i < this.teacherNumber!; i++) {
+    for (int i = 0; i < teacherNumber!; i++) {
       stdout.write('Enter your teacherNumber:');
       String teacherNumber = stdin.readLineSync()!;
       stdout.write('Enter your idNumber:');
@@ -60,24 +67,92 @@ class Dashboard {
   }
 
   void printAllteachers() {
-    for (var i = 0; i < this.allTeachers.length; i++) {
-      stdout.writeln('teachers number: ${this.allTeachers[i].teacherNumber}');
-      stdout.writeln('teachers idnumber: ${this.allTeachers[i].idNumber}');
-      stdout.writeln('teachers firstname: ${this.allTeachers[i].firstName}');
-      stdout.writeln('teachers lastname: ${this.allTeachers[i].lastName}');
-      stdout.writeln('teachers birthday: ${this.allTeachers[i].birthday}');
-      stdout.writeln('teachers gender: ${this.allTeachers[i].gender}');
-      stdout
-          .writeln('teachers phonenumber: ${this.allTeachers[i].phoneNumber}');
-      stdout.writeln('teachers address: ${this.allTeachers[i].address}');
+    for (var i = 0; i < allTeachers.length; i++) {
+      stdout.writeln('teachers number: ${allTeachers[i].teacherNumber}');
+      stdout.writeln('teachers idnumber: ${allTeachers[i].idNumber}');
+      stdout.writeln('teachers firstname: ${allTeachers[i].firstName}');
+      stdout.writeln('teachers lastname: ${allTeachers[i].lastName}');
+      stdout.writeln('teachers birthday: ${allTeachers[i].birthday}');
+      stdout.writeln('teachers gender: ${allTeachers[i].gender}');
+      stdout.writeln('teachers phonenumber: ${allTeachers[i].phoneNumber}');
+      stdout.writeln('teachers address: ${allTeachers[i].address}');
 
       print('-----------------------');
     }
   }
-  // TODO write a method to get teachers object as list.
 
-  // TODO write a method to get student object as list.
+  void initStudent() {
+    for (int i = 0; i < studentNumber!; i++) {
+      stdout.write('Enter your stNumber:');
+      String stNumber = stdin.readLineSync()!;
+      stdout.write('Enter your idNumber:');
+      String idNumber = stdin.readLineSync()!;
+      stdout.write('Enter your firstName:');
+      String firstName = stdin.readLineSync()!;
+      stdout.write('Enter your lastName:');
+      String lastName = stdin.readLineSync()!;
+      stdout.write('Enter your birthday:');
+      String birthday = stdin.readLineSync()!;
+      stdout.write('Enter your gender: (M/W)');
+      String sexuality = stdin.readLineSync()!;
+      Gender gender;
+      if (sexuality == 'M') {
+        gender = Gender.man;
+      } else {
+        gender = Gender.woman;
+      }
+      stdout.write('Enter your phoneNumber:');
+      String phoneNumber = stdin.readLineSync()!;
+      stdout.write('Enter your address:');
+      String address = stdin.readLineSync()!;
 
-  // TODO write a method to get course object as list.
+      Student student = Student(
+        stNumber: stNumber,
+        idNumber: idNumber,
+        firstName: firstName,
+        lastName: lastName,
+        birthday: birthday,
+        gender: gender,
+        phoneNumber: phoneNumber,
+        address: address,
+      );
+      allStudents.add(student);
+    }
+  }
 
+  void printAllStudents() {
+    for (var i = 0; i < allStudents.length; i++) {
+      stdout.writeln('student number: ${allStudents[i].stNumber}');
+      stdout.writeln('student idnumber: ${allStudents[i].idNumber}');
+      stdout.writeln('student firstname: ${allStudents[i].firstName}');
+      stdout.writeln('student lastname: ${allStudents[i].lastName}');
+      stdout.writeln('student birthday: ${allStudents[i].birthday}');
+      stdout.writeln('student gender: ${allStudents[i].gender}');
+      stdout.writeln('student phonenumber: ${allStudents[i].phoneNumber}');
+      stdout.writeln('student address: ${allStudents[i].address}');
+
+      print('-----------------------');
+    }
+  }
+
+  void initCourse() {
+    for (var i = 0; i < courseNumber!; i++) {
+      stdout.write('Enter course name:');
+      String name = stdin.readLineSync()!;
+      stdout.write('Enter grade number:');
+      double grade = double.parse(stdin.readLineSync()!);
+
+      Course course = Course(name: name, grade: grade);
+      allCourses.add(course);
+    }
+  }
+
+  void printAllCourse() {
+    for (var i = 0; i < allCourses.length; i++) {
+      stdout.writeln('Course name: ${allCourses[i].name}');
+      stdout.writeln('Course grade: ${allCourses[i].grade}');
+
+      print('-----------------------');
+    }
+  }
 }
