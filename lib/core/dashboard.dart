@@ -1,13 +1,15 @@
 import 'dart:io';
+
 import '../models/course.dart';
 import '../models/gender.dart';
-import '../models/teacher.dart';
 import '../models/student.dart';
+import '../models/teacher.dart';
 
 class Dashboard {
   List<Teacher> allTeachers = [];
   List<Student> allStudents = [];
   List<Course> allCourses = [];
+  // TODD: create list of Grade.
   int? teacherNumber;
   int? studentNumber;
   int? courseNumber;
@@ -139,10 +141,8 @@ class Dashboard {
     for (var i = 0; i < courseNumber!; i++) {
       stdout.write('Enter course name:');
       String name = stdin.readLineSync()!;
-      stdout.write('Enter grade number:');
-      double grade = double.parse(stdin.readLineSync()!);
 
-      Course course = Course(name: name, grade: grade);
+      Course course = Course(name: name);
       allCourses.add(course);
     }
   }
@@ -150,9 +150,9 @@ class Dashboard {
   void printAllCourse() {
     for (var i = 0; i < allCourses.length; i++) {
       stdout.writeln('Course name: ${allCourses[i].name}');
-      stdout.writeln('Course grade: ${allCourses[i].grade}');
-
       print('-----------------------');
     }
   }
+
+  // TODO: Write method to create grade for specific Course, Student, Teacher
 }
