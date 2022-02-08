@@ -1,12 +1,16 @@
+import 'package:school_registration_console/models/course.dart';
+
 import 'person.dart';
 import 'teacher.dart';
 
 class Student extends Person {
   String stNumber;
   final List<Teacher> teachers;
+  final List<Course> courses;
 
   Student({
     required this.stNumber,
+    this.courses = const [],
     this.teachers = const [],
     idNumber,
     firstName,
@@ -24,17 +28,35 @@ class Student extends Person {
             address: address,
             phoneNumber: phoneNumber);
 
-  // TODO: write method to search in teachers.
+  void addTeacher(Teacher teacher) {
+    teachers.add(teacher);
+  }
 
-  // TODO: write method to search in course.
+  Teacher? searchInTeacher(String teachersName) {
+    for (int i = 0; i < teachers.length; i++) {
+      if (teachers[i].firstName == teachersName) {
+        return (teachers[i]);
+      }
+    }
+  }
 
-  // TODO: write method to add teacher to this student
+  void removeTeacher(Teacher teacher) {
+    teachers.remove(teacher);
+  }
 
-  // TODO: write method to add course to this student
+  void addCourse(Course course) {
+    courses.add(course);
+  }
 
-  // TODO: write method to remove teacher from this student.
+  Course? searchInCourse(String coursesName) {
+    for (int i = 0; i < courses.length; i++) {
+      if (courses[i].name == coursesName) {
+        return (courses[i]);
+      }
+    }
+  }
 
-  // TODO: write method to remove course from this student.
-
-  // TODO: write method to show course grade.
+  void removeCourse(Course course) {
+    courses.remove(course);
+  }
 }
